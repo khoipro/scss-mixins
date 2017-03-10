@@ -1,0 +1,23 @@
+
+// Standard class
+.icon {
+  @include bg(contain);
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+// Now create mixin
+@mixin gen-icon($icons) {
+  @each $icon in $icons {
+    .icon--#{$icon} {
+      background-image: url('../img/svg/icon-' + $icon + '.svg');
+    }
+  }
+}
+
+// Input your icon names here
+$icons: (panel, backup, speed, ssl, seo, system, installer);
+
+// It's time to generate automatic
+@include gen-icon($icons);
